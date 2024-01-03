@@ -1,8 +1,0 @@
-primarbgdark: #0f0f0f
-accent-red:#fe0000
-inactive-grey:#272727
-tab-active-white:#f0f1f0
-button blue:#3ea6fe
-
-roboto 700
-roboto 400

@@ -1,0 +1,9 @@
+export {default as HomeIcon} from './homeIcon';
+export {default as ShortsIcon} from './shortsIcon';
+export {default as SubsIcon} from './subscriptionsIcon';
+export {default as BellIcon} from './bell';
+export {default as CompassIcon} from './compass';
+export {default as ArrowLeft} from './arrowLeft';
+export {default as ScreenCast} from './castDevice';
+export {default as SearchIcon} from './search';
+export {default as SubsIconFilled} from './subscriptionIconFilled';
