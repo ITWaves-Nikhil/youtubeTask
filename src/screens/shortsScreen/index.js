@@ -6,13 +6,13 @@ import {ShortsIcon} from '../../components/svg';
 import {styles} from './style';
 
 const ShortsScreen = ({navigation, route}) => {
-  const isFocused = useIsFocused();
+  // const isFocused = useIsFocused();
 
-  useEffect(() => {
-    navigation.setOptions({
-      tabBarIcon: () => <ShortsIcon active={!!isFocused} />,
-    });
-  }, [isFocused]);
+  // useEffect(() => {
+  //   navigation.setOptions({
+  //     tabBarIcon: () => <ShortsIcon active={!!isFocused} />,
+  //   });
+  // }, [isFocused]);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primarbgdark}}>

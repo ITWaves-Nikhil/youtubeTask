@@ -11,7 +11,7 @@ const Navigator = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="SideDrawer" component={SideDrawer} />
-        <Stack.Screen name="Notification" component={NotificationScreen} />
+        {/* <Stack.Screen name="Notification" component={NotificationScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

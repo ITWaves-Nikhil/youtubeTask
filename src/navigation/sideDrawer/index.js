@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, SafeAreaView} from 'react-native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import BottomTab from '../bottomTabs';
 import {COLORS} from '../../constants/theme';
@@ -8,21 +8,27 @@ const Drawer = createDrawerNavigator();
 const SideDrawer = () => {
   function DrawerContent() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: COLORS.primarbgdark,
-          paddingHorizontal: 15,
-        }}>
-        <Logo />
-      </View>
+      <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primarbgdark}}>
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: COLORS.primarbgdark,
+            paddingHorizontal: 15,
+          }}>
+          <Logo />
+        </View>
+      </SafeAreaView>
     );
   }
 
   return (
     <Drawer.Navigator
       drawerContent={() => <DrawerContent />}
-      screenOptions={{headerShown: false}}>
+      screenOptions={{
+        headerShown: false,
+        drawerType: 'front',
+        swipeEnabled: false,
+      }}>
       <Drawer.Screen name="Tabs" component={BottomTab} />
     </Drawer.Navigator>
   );

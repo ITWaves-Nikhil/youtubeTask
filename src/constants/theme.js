@@ -4,6 +4,8 @@ export const COLORS = {
   inactive_grey: '#272727',
   active_white: '#f0f1f0',
   blue: '#3ea6fe',
+  white: '#ffffff',
+  black: '#000000',
 };
 export const FONTS = {
   Regular: 'Roboto Regular',

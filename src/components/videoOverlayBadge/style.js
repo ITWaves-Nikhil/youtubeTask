@@ -1,8 +1,11 @@
 import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/theme';
 export const styles = StyleSheet.create({
-  pressed: {
-    // opacity: 0.7,
-    backgroundColor: COLORS.inactive_grey,
+  rootContainer: {
+    position: 'absolute',
+    backgroundColor: COLORS.black,
+
+    padding: 3,
+    borderRadius: 6,
   },
 });

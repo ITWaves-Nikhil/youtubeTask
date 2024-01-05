@@ -7,7 +7,7 @@ import {COLORS} from '../../constants/theme';
 const UserPanel = ({navigation, route}) => {
   const isFocused = useIsFocused();
 
-  function TabIcon(style) {
+  function TabIcon() {
     return (
       <View
         style={[
@@ -20,7 +20,7 @@ const UserPanel = ({navigation, route}) => {
             alignItems: 'center',
             overflow: 'hidden',
           },
-          style,
+          !!isFocused && {borderWidth: 1, borderColor: COLORS.active_white},
         ]}>
         <Text style={{color: COLORS.active_white}}>A</Text>
       </View>
@@ -29,15 +29,9 @@ const UserPanel = ({navigation, route}) => {
 
   useEffect(() => {
     navigation.setOptions({
-      tabBarIcon: () => (
-        <TabIcon
-          style={
-            isFocused ? {borderWidth: 1, borderColor: COLORS.active_white} : {}
-          }
-        />
-      ),
+      tabBarIcon: () => <TabIcon />,
     });
-  }, []);
+  }, [isFocused]);
 
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primarbgdark}}>
