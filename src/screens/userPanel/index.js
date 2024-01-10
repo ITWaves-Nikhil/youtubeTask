@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {useIsFocused} from '@react-navigation/native';
 // import {styles} from './style';
 import {COLORS} from '../../constants/theme';
+import {styles} from './style';
 
 const UserPanel = ({navigation, route}) => {
   const isFocused = useIsFocused();
@@ -11,15 +12,7 @@ const UserPanel = ({navigation, route}) => {
     return (
       <View
         style={[
-          {
-            height: 24,
-            width: 24,
-            backgroundColor: 'green',
-            borderRadius: 20,
-            justifyContent: 'center',
-            alignItems: 'center',
-            overflow: 'hidden',
-          },
+          styles.userHeader,
           !!isFocused && {borderWidth: 1, borderColor: COLORS.active_white},
         ]}>
         <Text style={{color: COLORS.active_white}}>A</Text>

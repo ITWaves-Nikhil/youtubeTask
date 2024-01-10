@@ -6,8 +6,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: COLORS.primarbgdark,
     width: '100%',
-    // borderWidth: 1,
-    // borderColor: 'red',
   },
 
   topBar: {
@@ -25,7 +23,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bottomBar: {
-    // borderWidth: 1, borderColor: 'red',
     height: '40%',
   },
 });

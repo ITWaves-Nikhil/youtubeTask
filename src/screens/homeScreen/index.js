@@ -7,6 +7,7 @@ import {
   FlatList,
   Text,
 } from 'react-native';
+import {CONTENT_TYPE} from '../../constants/enums';
 import {styles} from './style';
 import {Data} from '../../data';
 import AnimtedAppBar from './AnimtedAppBar';
@@ -15,11 +16,6 @@ import VideoItem from '../../components/videoItem';
 import CastScreenModal from '../../components/castScreenModal';
 import ShortsGroup from '../../components/shortsGroup';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {
-  OffsetYProvider,
-  IndexProvider,
-  InCenterConsumer,
-} from '@n1ru4l/react-in-center-of-screen';
 
 const {height: screenHeight, width: screenWidth} = Dimensions.get('window');
 
@@ -47,13 +43,13 @@ const HomeScreen = ({navigation, route}) => {
     outputRange: [0, -barHeight],
   });
 
-  translateY.addListener(v => {
-    // console.log({v});
-  });
+  // translateY.addListener(v => {
+  // console.log({v});
+  // });
 
   const _renderItem = ({index, item}) => {
     switch (item?.type) {
-      case 'video':
+      case CONTENT_TYPE?.video:
         return (
           <VideoItem
             data={item}
@@ -61,7 +57,7 @@ const HomeScreen = ({navigation, route}) => {
             currentPlaybackIndex={currentPlaybackItem}
           />
         );
-      case 'Shorts':
+      case CONTENT_TYPE?.shorts:
         return <ShortsGroup data={item?.data} />;
       default:
         break;
@@ -84,67 +80,6 @@ const HomeScreen = ({navigation, route}) => {
           setIsModalVisible={setIsModalVisible}
           // setSearchActive={se/tSearchActive}
         />
-        {/* <OffsetYProvider
-          columnsPerRow={1}
-          listItemHeight={screenHeight}
-          centerYStart={(screenHeight / 100) * 15}
-          centerYEnd={((screenHeight * 2) / 100) * 15}>
-          {({setOffsetY}) => (
-            <FlatList
-              data={Data}
-              ListHeaderComponent={() => (
-                <View
-                  style={{
-                    height: barHeight,
-                  }}></View>
-              )}
-              onScroll={({nativeEvent}) => {
-                if (nativeEvent.contentOffset.y > 0) {
-                  scrollY.setValue(nativeEvent.contentOffset.y);
-                }
-                setOffsetY(nativeEvent.contentOffset.y);
-              }}
-              scrollEventThrottle={16}
-              keyExtractor={({index}) => index}
-              renderItem={({index, item}) => {
-                if (item?.type === 'video') {
-                  return (
-                    <IndexProvider index={index}>
-                      {() => (
-                        <View
-                          style={
-                            {
-                              // borderWidth: 5,
-                              // borderColor: 'white',
-                              // height: '100%',
-                              // backgroundColor: item,
-                              // borderWidth: 1,
-                              // borderColor: 'white',
-                            }
-                          }>
-                          <InCenterConsumer>
-                            {({isInCenter}) => {
-                              if (isInCenter) {
-                                // setCurrentPlayback(true);
-                                return <VideoItem data={item} paused={false} />;
-                              } else {
-                                // setCurrentPlayback(false);
-                                return <VideoItem data={item} paused={true} />;
-                              }
-                            }}
-                          </InCenterConsumer>
-                        </View>
-                      )}
-                    </IndexProvider>
-                  );
-                } else {
-                  return <ShortsGroup data={item?.data} />;
-                }
-              }}
-            />
-          )}
-        </OffsetYProvider> */}
-
         <FlatList
           ListHeaderComponent={() => <View style={{height: barHeight}}></View>}
           data={Data}
@@ -167,10 +102,10 @@ const HomeScreen = ({navigation, route}) => {
           }}
         />
       </SafeAreaView>
-      {/* <CastScreenModal
+      <CastScreenModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
-      /> */}
+      />
     </>
   );
 };

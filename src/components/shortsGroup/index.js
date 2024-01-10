@@ -7,7 +7,6 @@ import {PATHS} from '../../constants/assets';
 import {COLORS} from '../../constants/theme';
 
 const ShortsGroup = ({data}) => {
-  // console.log('shorts ', data);
   return (
     <View style={styles.rootContainer}>
       <View style={styles.logoContainer}>

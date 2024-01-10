@@ -7,3 +7,9 @@ export const CATEGORIES = [
   'Business',
   'Fintech',
 ];
+
+export const CONTENT_TYPE = {
+  shorts: 'Shorts',
+  video: 'video',
+  ad: 'ad',
+};

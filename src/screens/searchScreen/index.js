@@ -25,7 +25,7 @@ const SearchScreen = ({navigation}) => {
           <TextInput
             ref={searchInputRef}
             placeholder="Search Youtube"
-            placeholderTextColor={'#ccc'}
+            placeholderTextColor={COLORS?.def_gray}
             style={styles.searchInput}
             // autoFocus={true}
           />

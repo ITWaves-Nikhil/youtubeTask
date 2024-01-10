@@ -8,6 +8,8 @@ import {Text, View} from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import {HomeIcon, ShortsIcon, SubsIcon} from '../../components/svg';
 import HomeStack from '../HomeStack';
+import {TAB_SCREEN_NAMES, TAB_BAR_LABELS} from '../../constants/navigation';
+import {styles} from './style';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,11 +26,11 @@ const BottomTab = ({navigation, route}) => {
         tabBarInactiveTintColor: COLORS.active_white,
       }}>
       <Tab.Screen
-        name="HomeStack"
+        name={TAB_SCREEN_NAMES?.HOMESTACK}
         component={HomeStack}
         options={props => {
           return {
-            tabBarLabel: 'Home',
+            tabBarLabel: TAB_BAR_LABELS?.HOME,
             tabBarIcon: () => (
               <HomeIcon active={props?.navigation.isFocused?.()} />
             ),
@@ -36,11 +38,11 @@ const BottomTab = ({navigation, route}) => {
         }}
       />
       <Tab.Screen
-        name="ShortsScreen"
+        name={TAB_SCREEN_NAMES?.SHORTS_TAB}
         component={ShortsScreen}
         options={props => {
           return {
-            tabBarLabel: 'Shorts',
+            tabBarLabel: TAB_BAR_LABELS?.SHORTS,
             tabBarIcon: () => (
               <ShortsIcon active={props?.navigation.isFocused?.()} />
             ),
@@ -48,7 +50,7 @@ const BottomTab = ({navigation, route}) => {
         }}
       />
       <Tab.Screen
-        name="CreateScreen"
+        name={TAB_SCREEN_NAMES?.CREATE_TAB}
         component={CreateScreen}
         options={{
           tabBarLabel: '',
@@ -58,29 +60,20 @@ const BottomTab = ({navigation, route}) => {
         }}
       />
       <Tab.Screen
-        name="SubscriptionScreen"
+        name={TAB_SCREEN_NAMES?.SUBSCRIPTION_TAB}
         component={SubscriptionScreen}
         options={{
-          tabBarLabel: 'Subscription',
+          tabBarLabel: TAB_BAR_LABELS?.SUBS,
           tabBarIcon: () => <SubsIcon />,
         }}
       />
       <Tab.Screen
-        name="UserPanel"
+        name={TAB_SCREEN_NAMES?.USER_TAB}
         component={UserPanel}
         options={{
-          tabBarLabel: 'You',
+          tabBarLabel: TAB_BAR_LABELS?.USER,
           tabBarIcon: () => (
-            <View
-              style={{
-                height: 24,
-                width: 24,
-                backgroundColor: 'green',
-                borderRadius: 20,
-                justifyContent: 'center',
-                alignItems: 'center',
-                overflow: 'hidden',
-              }}>
+            <View style={styles.userTab}>
               <Text style={{color: COLORS.active_white}}>A</Text>
             </View>
           ),

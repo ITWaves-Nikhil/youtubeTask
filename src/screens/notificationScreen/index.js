@@ -10,6 +10,8 @@ import {
   ScreenCast,
   SearchIcon,
 } from '../../components/svg';
+import {STRINGS} from '../../constants/strings';
+import {SCREEN_TITLES} from '../../constants/navigation';
 
 const NotificationScreen = ({navigation, route}) => {
   useLayoutEffect(() => {
@@ -29,11 +31,13 @@ const NotificationScreen = ({navigation, route}) => {
       <View style={styles.leftHeaderContainer}>
         <AntIcon
           name={iconName}
-          color={'white'}
+          color={COLORS?.white}
           size={24}
           onPress={() => navigation.goBack()}
         />
-        <Text style={styles.leftHeaderTitleText}>Notifications</Text>
+        <Text style={styles.leftHeaderTitleText}>
+          {SCREEN_TITLES?.NOTIFICATION}
+        </Text>
       </View>
     );
   }
@@ -55,15 +59,12 @@ const NotificationScreen = ({navigation, route}) => {
   }
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primarbgdark}}>
+    <SafeAreaView style={styles.root}>
       <View style={styles.mainContainer}>
         <View style={styles.innerContainer}>
           <BellIcon />
-          <Text style={styles.biggerText}>Your notifications live here</Text>
-          <Text style={styles.smallerText}>
-            Subscribe to your favourite channels to recieve notifications about
-            their latest videos.
-          </Text>
+          <Text style={styles.biggerText}>{STRINGS?.NOTIF_SCREEN_1}</Text>
+          <Text style={styles.smallerText}>{STRINGS?.NOTIF_SCREEN_2}</Text>
         </View>
       </View>
     </SafeAreaView>

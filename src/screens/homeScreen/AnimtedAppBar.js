@@ -1,4 +1,4 @@
-import {Animated, View, SafeAreaView} from 'react-native';
+import {Animated, View} from 'react-native';
 import Logo from '../../components/logo';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {CATEGORIES} from '../../constants/enums';
@@ -13,8 +13,9 @@ import {styles} from './AppBarStyles';
 import PressableIcon from '../../components/pressableIcon';
 import {FlatList} from 'react-native-gesture-handler';
 import TopBarBadge from '../../components/topBarBadge';
-import {useEffect, useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {SCREEN_NAMES} from '../../constants/navigation';
 
 const AnimtedAppBar = ({
   translateY,
@@ -57,10 +58,14 @@ const AnimtedAppBar = ({
           <PressableIcon>
             <ScreenCast onPress={() => setIsModalVisible(true)} />
           </PressableIcon>
-          <PressableIcon onPress={() => navigation.navigate('Notification')}>
+          <PressableIcon
+            onPress={() =>
+              navigation.navigate(SCREEN_NAMES?.NOTIFICATION_SCREEN)
+            }>
             <BellIcon />
           </PressableIcon>
-          <PressableIcon onPress={() => navigation.navigate('SearchScreen')}>
+          <PressableIcon
+            onPress={() => navigation.navigate(SCREEN_NAMES?.SEARCH_SCREEN)}>
             <SearchIcon />
           </PressableIcon>
         </View>

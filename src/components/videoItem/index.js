@@ -16,7 +16,6 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
     return index === currentPlaybackIndex;
   }, [currentPlaybackIndex]);
 
-  // console.log();
   const videoRef = useRef();
 
   const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
@@ -25,21 +24,18 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
   return (
     <Pressable style={({pressed}) => pressed && styles.pressed}>
       <View style={styles.imageContainer}>
-        {/* <Image
-          source={{uri: data?.thumbnail}}
-          style={styles.image}
-          resizeMode="cover"
-        /> */}
         <Video
           muted={isMute}
           paused={!isCurrentlyPlaying}
           source={{uri: data?.videoUrl}}
           style={styles.image}
           poster={data?.thumbnail}
+          resizeMode="cover"
           onProgress={p =>
             isCurrentlyPlaying && setProgressTime(parseInt(p?.currentTime))
           }
         />
+
         {isCurrentlyPlaying && (
           <VideoOverlayBadge position={{right: 10, top: 20}}>
             <PressableIcon onPress={() => setIsMute(state => !state)}>
@@ -63,7 +59,10 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
               color={COLORS.accent_red}
               borderRadius={0}
               height={2}
+              style={{justifyContent: 'center'}}
             />
+
+            {/* </ProgressBar> */}
           </View>
         )}
       </View>

@@ -6,6 +6,7 @@ export const COLORS = {
   blue: '#3ea6fe',
   white: '#ffffff',
   black: '#000000',
+  def_gray: '#cccccc',
 };
 export const FONTS = {
   Regular: 'Roboto Regular',
