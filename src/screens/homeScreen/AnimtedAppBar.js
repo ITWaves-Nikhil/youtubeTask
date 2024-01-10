@@ -1,4 +1,4 @@
-import {Animated, View} from 'react-native';
+import {Animated, View, SafeAreaView} from 'react-native';
 import Logo from '../../components/logo';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {CATEGORIES} from '../../constants/enums';
@@ -14,21 +14,26 @@ import PressableIcon from '../../components/pressableIcon';
 import {FlatList} from 'react-native-gesture-handler';
 import TopBarBadge from '../../components/topBarBadge';
 import {useEffect, useRef, useState} from 'react';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 const AnimtedAppBar = ({
   translateY,
   barHeight,
-  setIsModalVisible,
   activeTab,
   setActiveTab,
+  setIsModalVisible,
 }) => {
+  const insets = useSafeAreaInsets();
+  // console.log({insets});
   const navigation = useNavigation();
   const [scrollPosition, setScrollPosition] = useState(0);
 
   const listRef = useRef();
-  useEffect(() => {
-    console.log(scrollPosition);
-  }, [scrollPosition]);
+
+  // useEffect(() => {
+  //   listRef.current.scrollToIndex({index: activeTab});
+  //   // console.log(scrollPosition);
+  // }, [activeTab]);
 
   const openDrawerHandler = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
@@ -38,8 +43,8 @@ const AnimtedAppBar = ({
     //for animation
     height: barHeight,
     transform: [{translateY: translateY}],
-    // position: 'absolute',
-    top: 0,
+    position: 'absolute',
+    top: insets?.top,
     elevation: 4,
     zIndex: 1,
   };
@@ -55,7 +60,7 @@ const AnimtedAppBar = ({
           <PressableIcon onPress={() => navigation.navigate('Notification')}>
             <BellIcon />
           </PressableIcon>
-          <PressableIcon>
+          <PressableIcon onPress={() => navigation.navigate('SearchScreen')}>
             <SearchIcon />
           </PressableIcon>
         </View>
@@ -63,6 +68,18 @@ const AnimtedAppBar = ({
       <View style={styles.bottomBar}>
         <FlatList
           ref={listRef}
+          showsHorizontalScrollIndicator={false}
+          // initialScrollIndex={activeTab}
+          // onScrollToIndexFailed={({index, averageItemLength}) => {
+          //   const wait = new Promise(resolve => setTimeout(resolve, 500));
+          //   wait.then(() => {
+          //     listRef.current?.scrollToIndex({
+          //       index: index,
+          //       animated: true,
+          //       // offset: averageItemLength * index - 1,
+          //     });
+          //   });
+          // }}
           ListHeaderComponent={() => (
             <TopBarBadge>
               <PressableIcon onPress={openDrawerHandler}>
@@ -72,9 +89,11 @@ const AnimtedAppBar = ({
           )}
           data={CATEGORIES}
           horizontal={true}
-          renderItem={({item}) => (
+          // onScroll={({nativeEvent}) => console.log(nativeEvent.contentOffset.x)}
+          renderItem={({item, index}) => (
             <TopBarBadge
               data={item}
+              index={index}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
               setScrollPosition={setScrollPosition}

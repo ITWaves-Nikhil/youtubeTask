@@ -37,6 +37,35 @@ export const Data = [
     views: 257000,
   },
   {
+    type: 'Shorts',
+    data: [
+      {
+        id: '11',
+        title: 'Test',
+        thumbnail:
+          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg',
+      },
+      {
+        id: '12',
+        title: 'Test',
+        thumbnail:
+          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg',
+      },
+      {
+        id: '13',
+        title: 'Test',
+        thumbnail:
+          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg',
+      },
+      {
+        id: '14',
+        title: 'Test',
+        thumbnail:
+          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg',
+      },
+    ],
+  },
+  {
     id: '3',
     type: 'video',
     createdAt: '2 months ago',

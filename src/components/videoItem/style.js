@@ -2,7 +2,11 @@ import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/theme';
 export const styles = StyleSheet.create({
   imageContainer: {height: 250, width: '100%'},
-  image: {height: '100%', width: '100%'},
+  image: {
+    height: '100%',
+    width: '100%',
+    //  borderWidth: 1, borderColor: 'red'
+  },
   detailsContainer: {
     borderWidth: 1,
     borderColor: 'green',
@@ -30,7 +34,8 @@ export const styles = StyleSheet.create({
   descContainer: {
     flex: 1,
     height: '100%',
-    justifyContent: 'space-between',
+    gap: 4,
+    // justifyContent: 'space-between',
   },
   titleTextContainer: {
     width: '100%',

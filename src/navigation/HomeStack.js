@@ -3,6 +3,7 @@ import HomeScreen from '../screens/homeScreen';
 import NotificationScreen from '../screens/notificationScreen';
 import 'react-native-gesture-handler';
 import {COLORS} from '../constants/theme';
+import SearchScreen from '../screens/searchScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,11 @@ const HomeStack = ({navigation, route}) => {
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Notification" component={NotificationScreen} />
+      <Stack.Screen
+        name="SearchScreen"
+        component={SearchScreen}
+        options={{animation: 'none'}}
+      />
     </Stack.Navigator>
   );
 };

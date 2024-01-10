@@ -3,6 +3,7 @@ import React from 'react';
 import Navigator from './src/navigation';
 import {COLORS} from './src/constants/theme';
 import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 const App = () => {
   return (

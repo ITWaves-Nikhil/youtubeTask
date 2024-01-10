@@ -4,19 +4,21 @@ import {COLORS} from '../../constants/theme';
 import {styles} from './style';
 
 const TobBarBadge = ({
+  index,
   data,
   activeTab,
   setActiveTab,
   children,
   setScrollPosition,
 }) => {
-  const currentTabActive = activeTab === data && !children;
+  const currentTabActive = activeTab === index && !children;
   const SidePadding = !!children ? 4 : 8;
 
   const TabPressHandler = ({nativeEvent}) => {
-    console.log(nativeEvent);
+    // console.log(index);
+    // console.log(nativeEvent?.pageX);
     // setScrollPosition(nativeEvent?.pageX);
-    setActiveTab(data);
+    setActiveTab(index);
   };
 
   return (

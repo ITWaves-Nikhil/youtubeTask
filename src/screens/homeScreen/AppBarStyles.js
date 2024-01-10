@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: COLORS.primarbgdark,
     width: '100%',
+    // borderWidth: 1,
+    // borderColor: 'red',
   },
 
   topBar: {
@@ -18,7 +20,7 @@ export const styles = StyleSheet.create({
 
   topBarIconsContainer: {
     flexDirection: 'row',
-    gap: 15,
+    gap: 10,
     height: '100%',
     alignItems: 'center',
   },
