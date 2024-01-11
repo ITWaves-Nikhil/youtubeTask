@@ -9,4 +9,8 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     overflow: 'hidden',
   },
+  createIcon: {
+    top: 2,
+    position: 'absolute',
+  },
 });

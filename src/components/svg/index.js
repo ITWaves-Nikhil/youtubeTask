@@ -6,4 +6,6 @@ export {default as CompassIcon} from './compass';
 export {default as ArrowLeft} from './arrowLeft';
 export {default as ScreenCast} from './castDevice';
 export {default as SearchIcon} from './search';
+export {default as InfoIcon} from './infoIcon';
 export {default as SubsIconFilled} from './subscriptionIconFilled';
+export {default as CloseIcon} from './closeIcon';

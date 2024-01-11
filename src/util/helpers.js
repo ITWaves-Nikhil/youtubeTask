@@ -1,3 +1,5 @@
+import {CATEGORIES} from '../constants/enums';
+
 export function formatTime(seconds) {
   if (!!seconds) {
     const minutes = Math.floor(seconds / 60);
@@ -21,4 +23,21 @@ export function formatViewsCount(views) {
       return `${views}`;
     }
   }
+}
+
+export function filterData(data, index) {
+  if (index === 0) {
+    return data;
+  } else {
+    const matchesCategory = data.filter(item => {
+      if (item?.type === 'video') {
+        if (item?.categories.includes(CATEGORIES[index])) {
+          return item;
+        }
+        // console.log();
+      }
+    });
+    return matchesCategory;
+  }
+  // console.log(CATEGORIES[index]);
 }

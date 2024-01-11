@@ -3,6 +3,7 @@ import Modal from 'react-native-modal';
 import React, {useEffect, useState} from 'react';
 import {COLORS} from '../../constants/theme';
 import {styles} from './style';
+import {InfoIcon} from '../svg';
 
 const CastScreenModal = ({isModalVisible, setIsModalVisible}) => {
   const [searching, setSearching] = useState(true);
@@ -11,59 +12,46 @@ const CastScreenModal = ({isModalVisible, setIsModalVisible}) => {
     const timer = setTimeout(() => {
       setSearching(false);
     }, 5000);
-    return clearTimeout(timer);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [searching]);
 
   function ListItem({children}) {
     return <View style={styles.listItem}>{children}</View>;
+  }
+
+  function closeModal() {
+    setSearching(true);
+    setIsModalVisible(false);
   }
 
   return (
     <Modal
       animationIn={'fadeIn'}
       isVisible={isModalVisible}
-      onBackButtonPress={() => setIsModalVisible(false)}
-      onBackdropPress={() => setIsModalVisible(false)}>
+      onBackButtonPress={closeModal}
+      onBackdropPress={closeModal}>
       <View style={styles.root}>
         <Text style={styles.headerText}>Connect to a device</Text>
 
         {!!searching ? (
           <ListItem>
             <ActivityIndicator color={COLORS?.blue} size={24} />
-            <Text
-              style={{
-                fontSize: 14,
-                color: COLORS?.def_gray,
-                fontWeight: '400',
-              }}>
-              Searching for device
-            </Text>
+            <Text style={styles.listItemText}>Searching for device</Text>
           </ListItem>
         ) : (
           <ListItem>
-            <Text
-              style={{
-                fontSize: 14,
-                color: COLORS?.def_gray,
-                fontWeight: '400',
-              }}>
-              No device found
-            </Text>
+            <Text style={styles.listItemText}>No device found</Text>
           </ListItem>
         )}
         <ListItem>
           <ActivityIndicator color={COLORS?.blue} size={24} />
-          <Text
-            style={{fontSize: 14, color: COLORS?.def_gray, fontWeight: '400'}}>
-            Link with TV code
-          </Text>
+          <Text style={styles.listItemText}>Link with TV code</Text>
         </ListItem>
         <ListItem>
-          <ActivityIndicator color={COLORS?.blue} size={24} />
-          <Text
-            style={{fontSize: 14, color: COLORS?.def_gray, fontWeight: '400'}}>
-            Learn More
-          </Text>
+          <View style={{height: '100%', width: 25}}>
+            <InfoIcon />
+          </View>
+          <Text style={styles.listItemText}>Learn More</Text>
         </ListItem>
       </View>
     </Modal>

@@ -7,11 +7,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.primarbgdark,
   },
-  innerContainer: {flex: 1},
+  innerContainer: {flex: 1, backgroundColor: COLORS.primarbgdark},
   searchHeader: {
     height: 40,
-    borderColor: 'red',
-    borderWidth: 1,
     flexDirection: 'row',
     gap: 10,
     alignItems: 'center',

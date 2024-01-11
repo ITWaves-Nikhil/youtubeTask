@@ -6,7 +6,10 @@ import {
   Dimensions,
   FlatList,
   Text,
+  Platform,
 } from 'react-native';
+import CastScreenModalIOS from '../../components/castScreenModalIOS';
+
 import {CONTENT_TYPE} from '../../constants/enums';
 import {styles} from './style';
 import {Data} from '../../data';
@@ -16,10 +19,10 @@ import VideoItem from '../../components/videoItem';
 import CastScreenModal from '../../components/castScreenModal';
 import ShortsGroup from '../../components/shortsGroup';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import {filterData} from '../../util/helpers';
 
 const {height: screenHeight, width: screenWidth} = Dimensions.get('window');
 
-const boxHeight = screenHeight;
 let barHeight = 100;
 
 const HomeScreen = ({navigation, route}) => {
@@ -28,6 +31,8 @@ const HomeScreen = ({navigation, route}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [currentPlaybackItem, setCurrentPlaybackItem] = useState(0);
   const insets = useSafeAreaInsets();
+
+  const filteredData = useMemo(() => filterData(Data, activeTab), [activeTab]);
 
   const ScrollHeight = useMemo(() => {
     if (activeTab === 0) {
@@ -78,18 +83,16 @@ const HomeScreen = ({navigation, route}) => {
           activeTab={activeTab}
           setActiveTab={setActiveTab}
           setIsModalVisible={setIsModalVisible}
-          // setSearchActive={se/tSearchActive}
         />
         <FlatList
           ListHeaderComponent={() => <View style={{height: barHeight}}></View>}
-          data={Data}
+          // data={Data}
+          data={filteredData}
           viewabilityConfig={{
             itemVisiblePercentThreshold: 40,
           }}
-          onViewableItemsChanged={
-            ({changed, viewableItems}) =>
-              setCurrentPlaybackItem(viewableItems[0]?.index)
-            // console.log(viewableItems[0]?.index, viewableItems[0]?.item?.title)
+          onViewableItemsChanged={({changed, viewableItems}) =>
+            setCurrentPlaybackItem(viewableItems[0]?.index)
           }
           renderItem={_renderItem}
           keyExtractor={item => item?.id + item?.duration}
@@ -102,10 +105,12 @@ const HomeScreen = ({navigation, route}) => {
           }}
         />
       </SafeAreaView>
+      {/* {Platform.OS === 'android' && ( */}
       <CastScreenModal
         isModalVisible={isModalVisible}
         setIsModalVisible={setIsModalVisible}
       />
+      {/* )} */}
     </>
   );
 };

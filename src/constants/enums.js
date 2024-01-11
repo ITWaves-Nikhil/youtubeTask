@@ -5,11 +5,15 @@ export const CATEGORIES = [
   'Music',
   'Programming',
   'Business',
-  'Fintech',
+  'Finance',
 ];
 
 export const CONTENT_TYPE = {
   shorts: 'Shorts',
   video: 'video',
   ad: 'ad',
+};
+
+export const PLACEHOLDERS = {
+  SEARCH_INPUT: 'Search Youtube',
 };

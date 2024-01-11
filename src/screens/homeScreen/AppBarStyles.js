@@ -6,6 +6,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: COLORS.primarbgdark,
     width: '100%',
+    borderWidth: 1,
+    borderColor: 'white',
   },
 
   topBar: {

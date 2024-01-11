@@ -1,10 +1,10 @@
-import {View, Text, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import React from 'react';
 import Navigator from './src/navigation';
 import {COLORS} from './src/constants/theme';
 import 'react-native-gesture-handler';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-
+import {store} from './src/store/redux/store';
+import {Provider} from 'react-redux';
 const App = () => {
   return (
     <>
@@ -12,7 +12,9 @@ const App = () => {
         backgroundColor={COLORS.primarbgdark}
         barStyle={'light-content'}
       />
-      <Navigator />
+      <Provider store={store}>
+        <Navigator />
+      </Provider>
     </>
   );
 };

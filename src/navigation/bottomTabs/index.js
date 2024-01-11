@@ -52,10 +52,22 @@ const BottomTab = ({navigation, route}) => {
       <Tab.Screen
         name={TAB_SCREEN_NAMES?.CREATE_TAB}
         component={CreateScreen}
+        listeners={{
+          tabPress: e => {
+            e.preventDefault();
+          },
+        }}
         options={{
+          tabBarShowLabel: false,
+
           tabBarLabel: '',
           tabBarIcon: () => (
-            <AntIcon name="pluscircleo" size={24} color={'white'} />
+            <AntIcon
+              name="pluscircleo"
+              size={32}
+              color={COLORS.white}
+              style={styles.createIcon}
+            />
           ),
         }}
       />

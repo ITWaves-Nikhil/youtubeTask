@@ -1,5 +1,6 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {COLORS} from '../../constants/theme';
+const {width} = Dimensions.get('screen');
 export const styles = StyleSheet.create({
   imageContainer: {height: 250, width: '100%'},
   image: {
@@ -46,5 +47,20 @@ export const styles = StyleSheet.create({
     color: COLORS.active_white,
     fontSize: 13,
     fontWeight: '400',
+  },
+  slider: {
+    position: 'absolute',
+    height: 2,
+    bottom: -1,
+    width: '65%',
+    zIndex: 3,
+  },
+  sliderThumb: {
+    height: 12,
+    width: 12,
+    borderRadius: 15,
+  },
+  trackStyle: {
+    backgroundColor: 'transparent',
   },
 });
