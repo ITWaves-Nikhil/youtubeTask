@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 20,
-    gap: 10,
+    gap: 15,
   },
   biggerText: {
     textAlign: 'center',

@@ -5,6 +5,7 @@ import 'react-native-gesture-handler';
 import {COLORS} from '../constants/theme';
 import {SCREEN_NAMES} from '../constants/navigation';
 import SearchScreen from '../screens/searchScreen';
+import {Platform} from 'react-native';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,8 +16,7 @@ const HomeStack = ({navigation, route}) => {
         headerShown: false,
         gestureDirection: 'horizontal',
         gestureEnabled: true,
-        animation: 'slide_from_right',
-        animationDuration: 100,
+        animation: Platform.OS === 'android' ? 'default' : 'ios',
         headerTintColor: COLORS.active_white,
         headerTitle: '',
       }}>

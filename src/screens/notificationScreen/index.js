@@ -1,19 +1,23 @@
 import {View, Text, SafeAreaView, Platform} from 'react-native';
-import React, {useLayoutEffect} from 'react';
+import React, {useLayoutEffect, useState} from 'react';
 import {styles} from './style';
 import {COLORS} from '../../constants/theme';
 import PressableIcon from '../../components/pressableIcon';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import {
-  BellIcon,
-  CompassIcon,
+  BellFilled,
   ScreenCast,
   SearchIcon,
+  VerticalDots,
 } from '../../components/svg';
 import {STRINGS} from '../../constants/strings';
-import {SCREEN_TITLES} from '../../constants/navigation';
+import {SCREEN_NAMES, SCREEN_TITLES} from '../../constants/navigation';
+import CastScreenModal from '../../components/castScreenModal';
+import CastScreenModalIOS from '../../components/castScreenModalIOS';
 
 const NotificationScreen = ({navigation, route}) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: true,
@@ -46,28 +50,43 @@ const NotificationScreen = ({navigation, route}) => {
     return (
       <View style={styles.rightHeaderContainer}>
         <PressableIcon>
-          <ScreenCast onPress={() => {}} />
+          <ScreenCast onPress={() => setIsModalVisible(true)} />
         </PressableIcon>
-        <PressableIcon onPress={() => {}}>
-          <BellIcon />
+        <PressableIcon
+          onPress={() => navigation.navigate(SCREEN_NAMES?.SEARCH_SCREEN)}>
+          <SearchIcon />
         </PressableIcon>
         <PressableIcon>
-          <SearchIcon />
+          <VerticalDots />
         </PressableIcon>
       </View>
     );
   }
 
   return (
-    <SafeAreaView style={styles.root}>
-      <View style={styles.mainContainer}>
-        <View style={styles.innerContainer}>
-          <BellIcon />
-          <Text style={styles.biggerText}>{STRINGS?.NOTIF_SCREEN_1}</Text>
-          <Text style={styles.smallerText}>{STRINGS?.NOTIF_SCREEN_2}</Text>
+    <>
+      <View style={styles.root}>
+        <View style={styles.mainContainer}>
+          <View style={styles.innerContainer}>
+            <BellFilled />
+            <Text style={styles.biggerText}>{STRINGS?.NOTIF_SCREEN_1}</Text>
+            <Text style={styles.smallerText}>{STRINGS?.NOTIF_SCREEN_2}</Text>
+          </View>
         </View>
+        {Platform.OS === 'android' && (
+          <CastScreenModal
+            isModalVisible={isModalVisible}
+            setIsModalVisible={setIsModalVisible}
+          />
+        )}
       </View>
-    </SafeAreaView>
+      {isModalVisible && Platform.OS === 'ios' && (
+        <CastScreenModalIOS
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      )}
+    </>
   );
 };
 

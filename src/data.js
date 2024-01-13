@@ -101,4 +101,11 @@ export const Data = [
     },
     views: 257000,
   },
+  {
+    id: '5',
+    type: 'ad',
+    title: 'Byjus',
+    thumbnail:
+      'https://seeklogo.com/images/B/byjus-logo-E37962D240-seeklogo.com.png',
+  },
 ];

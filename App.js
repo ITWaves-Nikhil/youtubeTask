@@ -4,6 +4,7 @@ import Navigator from './src/navigation';
 import {COLORS} from './src/constants/theme';
 import 'react-native-gesture-handler';
 import {store} from './src/store/redux/store';
+import {PaperProvider} from 'react-native-paper';
 import {Provider} from 'react-redux';
 const App = () => {
   return (
@@ -13,7 +14,9 @@ const App = () => {
         barStyle={'light-content'}
       />
       <Provider store={store}>
-        <Navigator />
+        <PaperProvider>
+          <Navigator />
+        </PaperProvider>
       </Provider>
     </>
   );

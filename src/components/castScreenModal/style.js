@@ -20,4 +20,5 @@ export const styles = StyleSheet.create({
     height: 50,
   },
   listItemText: {fontSize: 14, color: COLORS?.def_gray, fontWeight: '400'},
+  iconContainer: {height: '100%', width: 25},
 });

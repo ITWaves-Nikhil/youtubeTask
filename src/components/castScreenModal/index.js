@@ -1,9 +1,11 @@
-import {View, Text, ActivityIndicator} from 'react-native';
+import {View, Text} from 'react-native';
 import Modal from 'react-native-modal';
 import React, {useEffect, useState} from 'react';
 import {COLORS} from '../../constants/theme';
 import {styles} from './style';
-import {InfoIcon} from '../svg';
+import {InfoIcon, LinkWithTv} from '../svg';
+import {ActivityIndicator} from 'react-native-paper';
+import {MODAL_TEXT} from '../../constants/strings';
 
 const CastScreenModal = ({isModalVisible, setIsModalVisible}) => {
   const [searching, setSearching] = useState(true);
@@ -13,7 +15,7 @@ const CastScreenModal = ({isModalVisible, setIsModalVisible}) => {
       setSearching(false);
     }, 5000);
     return () => clearTimeout(timer);
-  }, [searching]);
+  }, [searching, isModalVisible]);
 
   function ListItem({children}) {
     return <View style={styles.listItem}>{children}</View>;
@@ -31,27 +33,29 @@ const CastScreenModal = ({isModalVisible, setIsModalVisible}) => {
       onBackButtonPress={closeModal}
       onBackdropPress={closeModal}>
       <View style={styles.root}>
-        <Text style={styles.headerText}>Connect to a device</Text>
+        <Text style={styles.headerText}>{MODAL_TEXT?.androidTitle}</Text>
 
         {!!searching ? (
           <ListItem>
-            <ActivityIndicator color={COLORS?.blue} size={24} />
-            <Text style={styles.listItemText}>Searching for device</Text>
+            <ActivityIndicator color={COLORS?.blue} size={22} />
+            <Text style={styles.listItemText}>
+              {MODAL_TEXT?.serachingDevice}
+            </Text>
           </ListItem>
         ) : (
           <ListItem>
-            <Text style={styles.listItemText}>No device found</Text>
+            <Text style={styles.listItemText}>{MODAL_TEXT?.noDevice}</Text>
           </ListItem>
         )}
         <ListItem>
-          <ActivityIndicator color={COLORS?.blue} size={24} />
-          <Text style={styles.listItemText}>Link with TV code</Text>
+          <LinkWithTv />
+          <Text style={styles.listItemText}>{MODAL_TEXT?.linkTv}</Text>
         </ListItem>
         <ListItem>
-          <View style={{height: '100%', width: 25}}>
+          <View style={styles.iconContainer}>
             <InfoIcon />
           </View>
-          <Text style={styles.listItemText}>Learn More</Text>
+          <Text style={styles.listItemText}>{MODAL_TEXT?.learnMore}</Text>
         </ListItem>
       </View>
     </Modal>

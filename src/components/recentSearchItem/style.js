@@ -2,32 +2,31 @@ import {StyleSheet} from 'react-native';
 import {COLORS} from '../../constants/theme';
 export const styles = StyleSheet.create({
   root: {
-    backgroundColor: 'blue',
     flexDirection: 'row',
-    height: 40,
+    height: 45,
+    gap: 10,
+    paddingHorizontal: 8,
+    marginVertical: 4,
   },
   innerLeft: {
-    borderWidth: 1,
-    borderColor: 'white',
     height: '100%',
     width: 40,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   innerMiddle: {
     padding: 6,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    borderWidth: 1,
-    borderColor: 'white',
     flex: 1,
   },
   innerRight: {
-    borderWidth: 1,
-    borderColor: 'white',
     height: '100%',
     width: 40,
     justifyContent: 'center',
+    alignItems: 'center',
   },
   image: {height: '100%', width: 50},
+  titleText: {color: COLORS.white, fontWeight: '600', fontSize: 16},
 });

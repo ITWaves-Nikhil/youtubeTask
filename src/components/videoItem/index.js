@@ -7,10 +7,11 @@ import {COLORS} from '../../constants/theme';
 import VideoOverlayBadge from '../videoOverlayBadge';
 import Video, {VideoRef} from 'react-native-video';
 import PressableIcon from '../pressableIcon';
-import ProgressBar from 'react-native-progress/Bar';
+import {AudioIcon, MuteIcon, VerticalDots} from '../svg';
 
 const VideoItem = ({data, index, currentPlaybackIndex}) => {
   const [isMute, setIsMute] = useState(true);
+  const [bgVisible, setBgVisible] = useState(true);
   const [progressTime, setProgressTime] = useState(0);
   const isCurrentlyPlaying = useMemo(() => {
     return index === currentPlaybackIndex;
@@ -37,19 +38,26 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
             style={styles.image}
             poster={data?.thumbnail}
             resizeMode="cover"
-            onProgress={p =>
-              isCurrentlyPlaying && setProgressTime(parseInt(p?.currentTime))
-            }
+            onProgress={p => {
+              if (p?.currentTime > 15) {
+                setBgVisible(false);
+              }
+              isCurrentlyPlaying && setProgressTime(parseInt(p?.currentTime));
+            }}
           />
         )}
 
         {isCurrentlyPlaying && (
-          <VideoOverlayBadge position={{right: 10, top: 20}}>
-            <PressableIcon onPress={() => setIsMute(state => !state)}>
-              <Text style={styles.duration}>
-                {isMute ? 'muted' : 'not muted'}
-              </Text>
-            </PressableIcon>
+          <VideoOverlayBadge
+            position={{right: 10, top: 20}}
+            style={{
+              backgroundColor: bgVisible ? 'black' : 'transparent',
+            }}>
+            <Pressable onPress={() => setIsMute(state => !state)}>
+              <View style={styles.duration}>
+                {isMute ? <MuteIcon /> : <AudioIcon />}
+              </View>
+            </Pressable>
           </VideoOverlayBadge>
         )}
         <VideoOverlayBadge position={{right: 10, bottom: 20}}>
@@ -89,7 +97,9 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
             } • ${formatViewsCount(data?.views)} • ${data?.createdAt}`}</Text>
           </View>
         </View>
-        <View style={styles.moreIcon}></View>
+        <View style={styles.moreIcon}>
+          <VerticalDots size={18} />
+        </View>
       </View>
     </Pressable>
   );

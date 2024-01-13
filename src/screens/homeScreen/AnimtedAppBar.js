@@ -45,13 +45,14 @@ const AnimtedAppBar = ({
     height: barHeight,
     transform: [{translateY: translateY}],
     position: 'absolute',
-    top: insets?.top,
+    // top: insets?.top,
     elevation: 4,
     zIndex: 1,
   };
 
   return (
-    <Animated.View style={[styles.defaultAppBar, animatedStyles]}>
+    <Animated.View
+      style={[styles.defaultAppBar, {marginTop: insets?.top}, animatedStyles]}>
       <View style={styles.topBar}>
         <Logo />
         <View style={styles.topBarIconsContainer}>

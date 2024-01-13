@@ -8,19 +8,17 @@ import CastScreenModalIOS from '../../components/castScreenModalIOS';
 const ShortsScreen = ({navigation, route}) => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <SafeAreaView style={styles.root}>
-      <View style={styles.main}>
-        <Button
-          title="open modal"
-          onPress={() => setIsModalVisible(state => !state)}
-        />
+    <View style={styles.main}>
+      <Button
+        title="open modal"
+        onPress={() => setIsModalVisible(state => !state)}
+      />
 
-        <Text style={styles.whiteText}>ShortsScreen</Text>
-        {isModalVisible && (
-          <CastScreenModalIOS setIsModalVisible={setIsModalVisible} />
-        )}
-      </View>
-    </SafeAreaView>
+      <Text style={styles.whiteText}>ShortsScreen</Text>
+      {isModalVisible && (
+        <CastScreenModalIOS setIsModalVisible={setIsModalVisible} />
+      )}
+    </View>
   );
 };
 

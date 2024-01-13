@@ -31,6 +31,7 @@ export const styles = StyleSheet.create({
   duration: {color: COLORS.white, fontWeight: '500', fontSize: 13},
   moreIcon: {
     width: '8%',
+    alignItems: 'flex-end',
   },
   descContainer: {
     flex: 1,

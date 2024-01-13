@@ -4,21 +4,16 @@ const SVGComponent = props => (
   <Svg
     width="24px"
     height="24px"
-    viewBox="0 0 0.72 0.72"
-    fill="none"
+    viewBox="0 0 24 24"
     xmlns="http://www.w3.org/2000/svg"
+    fill="none"
     {...props}>
     <Path
-      d="m0.18 0.18 0.36 0.36"
-      stroke="#ffffff"
+      stroke="#fff"
       strokeLinecap="round"
-      strokeWidth={0.03}
-    />
-    <Path
-      d="M0.54 0.18 0.18 0.54"
-      stroke="#ffffff"
-      strokeLinecap="round"
-      strokeWidth={0.03}
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M10 4H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4m-8-2 8-8m0 0v5m0-5h-5"
     />
   </Svg>
 );
