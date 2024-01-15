@@ -25,16 +25,8 @@ const AnimtedAppBar = ({
   setIsModalVisible,
 }) => {
   const insets = useSafeAreaInsets();
-  // console.log({insets});
   const navigation = useNavigation();
-  const [scrollPosition, setScrollPosition] = useState(0);
-
   const listRef = useRef();
-
-  // useEffect(() => {
-  //   listRef.current.scrollToIndex({index: activeTab});
-  //   // console.log(scrollPosition);
-  // }, [activeTab]);
 
   const openDrawerHandler = () => {
     navigation.dispatch(DrawerActions.toggleDrawer());
@@ -45,14 +37,13 @@ const AnimtedAppBar = ({
     height: barHeight,
     transform: [{translateY: translateY}],
     position: 'absolute',
-    // top: insets?.top,
+    top: insets?.top,
     elevation: 4,
     zIndex: 1,
   };
 
   return (
-    <Animated.View
-      style={[styles.defaultAppBar, {marginTop: insets?.top}, animatedStyles]}>
+    <Animated.View style={[styles.defaultAppBar, animatedStyles]}>
       <View style={styles.topBar}>
         <Logo />
         <View style={styles.topBarIconsContainer}>
@@ -75,17 +66,6 @@ const AnimtedAppBar = ({
         <FlatList
           ref={listRef}
           showsHorizontalScrollIndicator={false}
-          // initialScrollIndex={activeTab}
-          // onScrollToIndexFailed={({index, averageItemLength}) => {
-          //   const wait = new Promise(resolve => setTimeout(resolve, 500));
-          //   wait.then(() => {
-          //     listRef.current?.scrollToIndex({
-          //       index: index,
-          //       animated: true,
-          //       // offset: averageItemLength * index - 1,
-          //     });
-          //   });
-          // }}
           ListHeaderComponent={() => (
             <TopBarBadge>
               <PressableIcon onPress={openDrawerHandler}>
@@ -95,14 +75,12 @@ const AnimtedAppBar = ({
           )}
           data={CATEGORIES}
           horizontal={true}
-          // onScroll={({nativeEvent}) => console.log(nativeEvent.contentOffset.x)}
           renderItem={({item, index}) => (
             <TopBarBadge
               data={item}
               index={index}
               activeTab={activeTab}
               setActiveTab={setActiveTab}
-              setScrollPosition={setScrollPosition}
             />
           )}
         />

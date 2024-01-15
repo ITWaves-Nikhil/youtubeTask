@@ -2,7 +2,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import SideDrawer from './sideDrawer';
 import {SCREEN_NAMES} from '../constants/navigation';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
 import 'react-native-gesture-handler';
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const Stack = createNativeStackNavigator();
 

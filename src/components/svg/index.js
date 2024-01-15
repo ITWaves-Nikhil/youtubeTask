@@ -19,3 +19,6 @@ export {default as History} from './History';
 export {default as TopLeftArrow} from './topLeftArrow';
 export {default as LinkWithTv} from './linkWithTv';
 export {default as CloseIcon} from './closeIcon';
+export {default as LikeButton} from './LikeButton';
+export {default as DislikeButton} from './DislikeButton';
+export {default as CommentIcon} from './CommentIcon';

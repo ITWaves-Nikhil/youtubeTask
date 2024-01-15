@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 15,
-    height: '50%',
+    height: 60,
   },
 
   topBarIconsContainer: {
@@ -25,6 +25,6 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
   },
   bottomBar: {
-    height: '40%',
+    height: 40,
   },
 });

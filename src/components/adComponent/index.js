@@ -1,18 +1,21 @@
-import {View, Text, Image} from 'react-native';
 import React from 'react';
-import {Redirect} from '../svg/index';
-import {styles} from './style';
+import EducationalAd from '../adComponent/educationalAd';
+import ShoppingAd from '../adComponent/shoppingAd';
 
-const Ad = ({data}) => {
-  return (
-    <View style={styles.root}>
-      <Image style={styles.image} source={{uri: data?.thumbnail}} />
-      <View style={styles.banner}>
-        <Text style={styles.whiteText}>Learn More</Text>
-        <Redirect />
-      </View>
-    </View>
-  );
+const Ad = ({data, index, currentPlaybackIndex}) => {
+  switch (data?.sub_type) {
+    case 'Educational':
+      return <EducationalAd data={data} />;
+    case 'Shopping':
+      return (
+        <ShoppingAd
+          data={data}
+          index={index}
+          currentPlaybackIndex={currentPlaybackIndex}
+        />
+      );
+    default:
+  }
 };
 
 export default Ad;

@@ -1,28 +1,19 @@
-import {View, Text, Image, Pressable, Dimensions} from 'react-native';
-import React, {useMemo, useRef, useState, useEffect} from 'react';
-import Slider from '@react-native-community/slider';
+import {View, Text, Image, Pressable} from 'react-native';
+import React, {useMemo, useRef, useState} from 'react';
 import {styles} from './style';
-import {formatTime, formatViewsCount} from '../../util/helpers';
-import {COLORS} from '../../constants/theme';
-import VideoOverlayBadge from '../videoOverlayBadge';
-import Video, {VideoRef} from 'react-native-video';
-import PressableIcon from '../pressableIcon';
-import {AudioIcon, MuteIcon, VerticalDots} from '../svg';
+import VideoOverlayBadge from '../../videoOverlayBadge';
+import Video from 'react-native-video';
+import PressableButton from '../../pressableButton';
+import {AudioIcon, MuteIcon, Redirect, VerticalDots} from '../../svg';
 
-const VideoItem = ({data, index, currentPlaybackIndex}) => {
+const ShoppingAd = ({data, index, currentPlaybackIndex}) => {
   const [isMute, setIsMute] = useState(true);
   const [bgVisible, setBgVisible] = useState(true);
-  const [progressTime, setProgressTime] = useState(0);
   const videoRef = useRef();
+
   const isCurrentlyPlaying = useMemo(() => {
     return index === currentPlaybackIndex;
   }, [currentPlaybackIndex]);
-
-  const mapNumRange = (num, inMin, inMax, outMin, outMax) =>
-    ((num - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
-
-  const reverseMapNumRange = (mappedNum, inMin, inMax, outMin, outMax) =>
-    ((mappedNum - outMin) * (inMax - inMin)) / (outMax - outMin) + inMin;
 
   return (
     <View>
@@ -47,7 +38,6 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
               if (p?.currentTime > 15) {
                 setBgVisible(false);
               }
-              isCurrentlyPlaying && setProgressTime(parseInt(p?.currentTime));
             }}
           />
         )}
@@ -65,37 +55,19 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
             </Pressable>
           </VideoOverlayBadge>
         )}
-        <VideoOverlayBadge position={{right: 10, bottom: 20}}>
-          <Text style={styles.duration}>
-            {formatTime(isCurrentlyPlaying ? progressTime : data?.duration)}
-          </Text>
+        <VideoOverlayBadge
+          position={{right: 10, bottom: 10}}
+          style={{
+            backgroundColor: 'black',
+          }}>
+          <Redirect />
         </VideoOverlayBadge>
-
-        {isCurrentlyPlaying && (
-          <Slider
-            minimumValue={0}
-            maximumValue={1}
-            value={mapNumRange(progressTime, 0, data?.duration, 0, 1)}
-            thumbTintColor={COLORS.accent_red}
-            style={styles.slider}
-            minimumTrackTintColor={COLORS.accent_red}
-            maximumTrackTintColor={COLORS.inactive_grey}
-            trackStyle={styles.trackStyle}
-            thumbStyle={styles.sliderThumb}
-            onValueChange={v =>
-              videoRef.current.seek(
-                reverseMapNumRange(v, 0, data?.duration, 0, 1),
-              )
-            }
-            hitSlop={{top: 20, left: 20, bottom: 20, right: 20}}
-          />
-        )}
       </View>
 
       <View style={styles.detailsContainer}>
         <View style={styles.avatarContainer}>
           <Image
-            source={{uri: data?.user?.image}}
+            source={{uri: data?.logo}}
             style={styles.avatarImage}
             resizeMode="cover"
           />
@@ -105,17 +77,30 @@ const VideoItem = ({data, index, currentPlaybackIndex}) => {
             <Text style={styles.titleText}>{data?.title}</Text>
           </View>
           <View style={styles.videoDetailContainer}>
+            <Text style={styles.videoDetailText}>{data?.desc}</Text>
             <Text style={styles.videoDetailText}>{`${
-              data?.user?.name
-            } • ${formatViewsCount(data?.views)} • ${data?.createdAt}`}</Text>
+              data?.isSponsored && 'Sponsored'
+            } • ${data?.appRating}`}</Text>
           </View>
         </View>
         <View style={styles.moreIcon}>
           <VerticalDots size={18} />
         </View>
       </View>
+      <View style={styles.buttonContainer}>
+        <PressableButton
+          containerStyle={styles.leftButton}
+          textStyle={styles.blueText}>
+          Later
+        </PressableButton>
+        <PressableButton
+          containerStyle={styles.rightButton}
+          textStyle={styles.blackText}>
+          Shop Now
+        </PressableButton>
+      </View>
     </View>
   );
 };
 
-export default VideoItem;
+export default ShoppingAd;

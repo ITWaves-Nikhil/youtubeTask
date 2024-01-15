@@ -12,6 +12,7 @@ export const CONTENT_TYPE = {
   shorts: 'Shorts',
   video: 'video',
   ad: 'ad',
+  carousel: 'carousel',
 };
 
 export const PLACEHOLDERS = {

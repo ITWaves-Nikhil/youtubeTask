@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 import {SafeAreaView, View, Animated, FlatList, Platform} from 'react-native';
 import CastScreenModalIOS from '../../components/castScreenModalIOS';
 
@@ -13,6 +13,7 @@ import ShortsGroup from '../../components/shortsGroup';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {filterData} from '../../util/helpers';
 import Ad from '../../components/adComponent';
+import VideoCarousel from '../../components/videoCarousel';
 
 const HomeScreen = ({navigation, route}) => {
   const scrollY = new Animated.Value(0);
@@ -38,10 +39,6 @@ const HomeScreen = ({navigation, route}) => {
     outputRange: [0, -barHeight],
   });
 
-  // translateY.addListener(v => {
-  // console.log({v});
-  // });
-
   const _renderItem = ({index, item}) => {
     switch (item?.type) {
       case CONTENT_TYPE?.video:
@@ -55,9 +52,16 @@ const HomeScreen = ({navigation, route}) => {
       case CONTENT_TYPE?.shorts:
         return <ShortsGroup data={item?.data} />;
       case CONTENT_TYPE?.ad:
-        return <Ad data={item} />;
+        return (
+          <Ad
+            data={item}
+            index={index}
+            currentPlaybackIndex={currentPlaybackItem}
+          />
+        );
+      case CONTENT_TYPE?.carousel:
+        return <VideoCarousel data={item} />;
       default:
-        break;
     }
   };
 
@@ -67,7 +71,6 @@ const HomeScreen = ({navigation, route}) => {
         style={{
           flex: 1,
           backgroundColor: COLORS.primarbgdark,
-          // paddingTop: insets?.top,
         }}>
         <AnimtedAppBar
           translateY={translateY}
@@ -88,11 +91,9 @@ const HomeScreen = ({navigation, route}) => {
           renderItem={_renderItem}
           keyExtractor={item => item?.id + item?.duration}
           ItemSeparatorComponent={() => <View style={{height: 10}} />}
-          // scrollEventThrottle={16}
           onScroll={({nativeEvent}) => {
-            // if (nativeEvent.contentOffset.y > 0) {
+            // console.log('scrollY', nativeEvent.contentOffset.y);
             scrollY.setValue(nativeEvent.contentOffset.y);
-            // }
           }}
         />
       </SafeAreaView>

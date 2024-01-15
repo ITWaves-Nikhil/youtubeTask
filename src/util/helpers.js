@@ -34,10 +34,8 @@ export function filterData(data, index) {
         if (item?.categories.includes(CATEGORIES[index])) {
           return item;
         }
-        // console.log();
       }
     });
     return matchesCategory;
   }
-  // console.log(CATEGORIES[index]);
 }

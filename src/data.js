@@ -1,5 +1,19 @@
 export const Data = [
   {
+    id: '5',
+    type: 'ad',
+    sub_type: 'Shopping',
+    logo: 'https://aartisto.com/wp-content/uploads/2020/11/myntra-930x620.png',
+    title: 'Myntra',
+    desc: 'Your one stop shop',
+    appRating: 4.2,
+    isSponsored: true,
+    thumbnail:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg',
+    videoUrl:
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+  },
+  {
     id: '1',
     type: 'video',
     createdAt: '5 months ago',
@@ -18,6 +32,37 @@ export const Data = [
     },
     views: 357000,
   },
+  {
+    id: '23',
+    type: 'carousel',
+    createdAt: '5 months ago',
+    title: 'PAANI! PAANI! PAANI!',
+    thumbnail:
+      'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/thumbnails/thumbnail1.jpeg',
+    videoUrl:
+      'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+    duration: 384,
+    user: {
+      name: 'RealHit',
+      image:
+        'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+    },
+    previewImages: [
+      'https://pbs.twimg.com/media/E2O8CyiUYAA50ip?format=jpg&name=900x900',
+      'https://pbs.twimg.com/media/E2O8CyiUYAA50ip?format=jpg&name=900x900',
+      'https://pbs.twimg.com/media/E2O8CyiUYAA50ip?format=jpg&name=900x900',
+    ],
+    likes: 357000,
+    commentCount: 20,
+    comments: [
+      {
+        avatar:
+          'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg',
+        comment: 'thakk gaye honge, jal lijiye.🥃 ',
+      },
+    ],
+  },
+
   {
     id: '2',
     type: 'video',
@@ -101,9 +146,11 @@ export const Data = [
     },
     views: 257000,
   },
+
   {
-    id: '5',
+    id: '99',
     type: 'ad',
+    sub_type: 'Educational',
     title: 'Byjus',
     thumbnail:
       'https://seeklogo.com/images/B/byjus-logo-E37962D240-seeklogo.com.png',

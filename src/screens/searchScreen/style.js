@@ -1,7 +1,6 @@
 import {StyleSheet, Dimensions} from 'react-native';
 import {COLORS} from '../../constants/theme';
 
-const {height: screenHeight, width: screenWidth} = Dimensions.get('window');
 export const styles = StyleSheet.create({
   rootContainer: {
     flex: 1,
@@ -25,15 +24,8 @@ export const styles = StyleSheet.create({
   },
   searchInput: {
     flex: 1,
-    // borderWidth: 1,
-    // borderColor: 'red',
     color: COLORS.white,
-    // backgroundColor: COLORS.inactive_grey,
-    // paddingVertical: 6,
-    // paddingHorizontal: 12,
-    // borderRadius: 20,
     fontSize: 16,
-    // height: '90%',
   },
   searchHeaderLeft: {padding: 6},
   searchHeaderRight: {padding: 6, flexDirection: 'row', gap: 10},

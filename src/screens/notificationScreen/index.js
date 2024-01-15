@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, Platform} from 'react-native';
+import {View, Text, Platform} from 'react-native';
 import React, {useLayoutEffect, useState} from 'react';
 import {styles} from './style';
 import {COLORS} from '../../constants/theme';

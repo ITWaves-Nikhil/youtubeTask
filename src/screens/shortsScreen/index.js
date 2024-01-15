@@ -1,24 +1,16 @@
-import {View, Text, SafeAreaView, Button} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {View, Text, SafeAreaView} from 'react-native';
 import {COLORS} from '../../constants/theme';
-
 import {styles} from './style';
-import CastScreenModalIOS from '../../components/castScreenModalIOS';
 
 const ShortsScreen = ({navigation, route}) => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
   return (
-    <View style={styles.main}>
-      <Button
-        title="open modal"
-        onPress={() => setIsModalVisible(state => !state)}
-      />
-
-      <Text style={styles.whiteText}>ShortsScreen</Text>
-      {isModalVisible && (
-        <CastScreenModalIOS setIsModalVisible={setIsModalVisible} />
-      )}
-    </View>
+    <>
+      <SafeAreaView style={{flex: 1, backgroundColor: COLORS.primarbgdark}}>
+        <View style={{flex: 1, backgroundColor: COLORS.primarbgdark}}>
+          <Text style={{color: 'white'}}>SubscriptionScreen</Text>
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 

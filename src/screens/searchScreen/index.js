@@ -1,8 +1,9 @@
 import {View, TextInput, FlatList, Platform, Pressable} from 'react-native';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {addSearchItem} from '../../store/redux/searchSlice';
 import AntIcon from 'react-native-vector-icons/AntDesign';
 import {styles} from './style';
+import CastScreenModalIOS from '../../components/castScreenModalIOS';
 import PressableIcon from '../../components/pressableIcon';
 import CastScreenModal from '../../components/castScreenModal';
 
@@ -28,6 +29,17 @@ const SearchScreen = ({navigation}) => {
   const searchInputRef = useRef();
   const dispatch = useDispatch();
   const searchItems = useSelector(state => state.searchList.searchItems);
+
+  const filteredSearchItems = useMemo(() => {
+    if (searchText === '') {
+      return searchItems;
+    } else {
+      const filtered = searchItems.filter(
+        item => item?.title.slice(0, searchText?.length) === searchText,
+      );
+      return filtered;
+    }
+  }, [searchText]);
 
   useEffect(() => {
     if (searchText === '') {
@@ -92,19 +104,21 @@ const SearchScreen = ({navigation}) => {
             )}
           </View>
         </View>
-        {searchText === '' && (
-          <FlatList
-            style={{paddingVertical: 10}}
-            data={searchItems}
-            renderItem={({item}) => <RecentSearchItem data={item} />}
-          />
-        )}
+        <FlatList
+          style={{paddingVertical: 10}}
+          data={filteredSearchItems}
+          renderItem={({item}) => <RecentSearchItem data={item} />}
+        />
       </View>
-      {Platform.OS === 'android' && (
+      {Platform.OS === 'android' ? (
         <CastScreenModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
         />
+      ) : (
+        isModalVisible && (
+          <CastScreenModalIOS setIsModalVisible={setIsModalVisible} />
+        )
       )}
     </>
   );
