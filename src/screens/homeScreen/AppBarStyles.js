@@ -9,7 +9,19 @@ export const styles = StyleSheet.create({
     // borderWidth: 1,
     // borderColor: 'white',
   },
-
+  listFooterComponent: {
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+  },
+  listFooterItem: {
+    fontSize: 15,
+    color: COLORS.blue,
+    padding: 4,
+    fontWeight: '500',
+    marginBottom: 5,
+  },
   topBar: {
     width: '100%',
     flexDirection: 'row',

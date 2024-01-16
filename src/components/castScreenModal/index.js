@@ -29,6 +29,7 @@ const CastScreenModal = ({isModalVisible, setIsModalVisible}) => {
   return (
     <Modal
       animationIn={'fadeIn'}
+      animationOut={'fadeOut'}
       isVisible={isModalVisible}
       onBackButtonPress={closeModal}
       onBackdropPress={closeModal}>

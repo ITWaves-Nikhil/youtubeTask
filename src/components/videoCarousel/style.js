@@ -18,7 +18,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   uploadedOn: {color: COLORS.white},
-  userName: {color: COLORS.white},
+  userName: {color: COLORS.white, fontSize: 18},
   subHeaderBottom: {
     maxWidth: '90%',
     gap: 10,
@@ -27,7 +27,9 @@ export const styles = StyleSheet.create({
   },
   videoTitle: {color: COLORS.white, fontSize: 16},
   videoLink: {color: COLORS?.blue, fontSize: 16},
-  carouselContainer: {},
+  carouselContainer: {
+    marginVertical: 10,
+  },
   engagementDetails: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -59,14 +61,14 @@ export const styles = StyleSheet.create({
   },
   fadedCountText: {color: COLORS?.white, fontSize: 16, opacity: 0.8},
   carouselImage: {
-    height: 400,
+    height: 450,
     width: '100%',
     objectFit: 'cover',
   },
   slideImageContainer: {
     borderRadius: 15,
     overflow: 'hidden',
-    marginHorizontal: 10,
+    marginHorizontal: 8,
   },
   countBadge: {
     position: 'absolute',

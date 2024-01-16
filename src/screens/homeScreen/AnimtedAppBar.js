@@ -1,4 +1,4 @@
-import {Animated, View} from 'react-native';
+import {Animated, View, Text, Pressable} from 'react-native';
 import Logo from '../../components/logo';
 import {DrawerActions, useNavigation} from '@react-navigation/native';
 import {CATEGORIES} from '../../constants/enums';
@@ -66,6 +66,13 @@ const AnimtedAppBar = ({
         <FlatList
           ref={listRef}
           showsHorizontalScrollIndicator={false}
+          ListFooterComponent={() => (
+            <View style={styles.listFooterComponent}>
+              <Pressable>
+                <Text style={styles.listFooterItem}>Send Feedback</Text>
+              </Pressable>
+            </View>
+          )}
           ListHeaderComponent={() => (
             <TopBarBadge>
               <PressableIcon onPress={openDrawerHandler}>

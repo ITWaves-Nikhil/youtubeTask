@@ -48,8 +48,9 @@ const CastScreenModalIOS = ({setIsModalVisible}) => {
               backgroundStyle={{
                 backgroundColor: COLORS.inactive_grey,
                 borderRadius: 8,
+                margin: 6,
               }}
-              containerStyle={{margin: 6}}
+              // containerStyle={{}}
               onChange={handleSheetChanges}>
               <View style={styles.contentContainer}>
                 <View style={styles.headerContainer}>

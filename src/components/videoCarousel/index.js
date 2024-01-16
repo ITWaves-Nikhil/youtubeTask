@@ -9,6 +9,7 @@ import {
 } from '../../components/svg/index';
 import {COLORS} from '../../constants/theme';
 import Carousel from 'react-native-snap-carousel';
+import CustomCarousel from '../customCarousel';
 
 const {width: screenWidth} = Dimensions.get('screen');
 
@@ -47,13 +48,16 @@ const VideoCarousel = ({data}) => {
         </View>
       </View>
       <View style={styles.carouselContainer}>
+        {/* <CustomCarousel data={data?.previewImages} /> */}
         <Carousel
+          snapToAlignment="start"
           hasParallaxImages={true}
           data={data?.previewImages}
           renderItem={_renderItem}
-          sliderWidth={screenWidth}
-          itemWidth={screenWidth - 50}
+          sliderWidth={screenWidth - 10}
+          itemWidth={screenWidth - 40}
           inactiveSlideScale={1}
+          decelerationRate={'fast'}
         />
       </View>
       <View style={styles.engagementDetails}>
