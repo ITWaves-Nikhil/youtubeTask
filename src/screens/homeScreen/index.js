@@ -93,7 +93,12 @@ const HomeScreen = ({navigation, route}) => {
           ItemSeparatorComponent={() => <View style={{height: 10}} />}
           onScroll={({nativeEvent}) => {
             // console.log('scrollY', nativeEvent.contentOffset.y);
+            // if (
+            //   nativeEvent.contentOffset.y > 0 ||
+            //   nativeEvent.contentOffset.y <= barHeight
+            // ) {
             scrollY.setValue(nativeEvent.contentOffset.y);
+            // }
           }}
         />
       </SafeAreaView>
